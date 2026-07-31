@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "negotiation.schema.json",
+  "title": "PatentNegotiation",
+  "type": "object",
+  "required": [
+    "case_id",
+    "party_a",
+    "party_b",
+    "currency",
+    "settlement_value",
+    "status",
+    "turns"
+  ],
+  "properties": {
+    "case_id": { "type": "string" },
+    "party_a": { "type": "string" },
+    "party_b": { "type": "string" },
+    "currency": { "type": "string", "const": "USD" },
+    "settlement_value": { "type": "integer" },
+    "status": {
+      "type": "string",
+      "enum": ["in_progress", "agreed", "breakdown"]
+    },
+    "turns": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Round" }
+    }
+  },
+  "$defs": {
+    "PartyMove": {
+      "type": "object",
+      "required": ["action", "message"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": ["demand", "counter", "accept", "break"]
+        },
+        "offer": {
+          "oneOf": [{ "type": "integer", "minimum": 1 }, { "type": "null" }]
+        },
+        "reason": { "type": "string" },
+        "message": { "type": "string" }
+      }
+    },
+    "Round": {
+      "type": "object",
+      "required": ["round"],
+      "properties": {
+        "round": { "type": "integer", "minimum": 1 },
+        "party_a": { "$ref": "#/$defs/PartyMove" },
+        "party_b": { "$ref": "#/$defs/PartyMove" }
+      }
+    }
+  }
+}

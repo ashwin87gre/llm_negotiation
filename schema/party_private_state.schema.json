@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "party_private_state.schema.json",
+  "title": "PartyPrivateState",
+  "type": "object",
+  "required": [
+    "reservation_price",
+    "case_strength",
+    "opponent_argument_risk",
+    "litigation_cost_estimate",
+    "evaluation_summary",
+    "last_updated_round"
+  ],
+  "properties": {
+    "reservation_price": { "type": "integer", "minimum": 1 },
+    "case_strength": { "type": "number", "minimum": 0, "maximum": 1 },
+    "opponent_argument_risk": { "type": "number", "minimum": 0, "maximum": 1 },
+    "litigation_cost_estimate": { "type": "integer", "minimum": 1 },
+    "evaluation_summary": { "type": "string", "minLength": 1 },
+    "last_updated_round": { "type": "integer", "minimum": 1 }
+  }
+}

@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+*.egg-info/
+sample_run/*
+sample_run*/**
+!sample_run*/.gitkeep
+.DS_Store

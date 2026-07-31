@@ -1,0 +1,27 @@
+[project]
+name = "llm-negotiation"
+version = "0.1.0"
+description = "Patent negotiation simulation with LangGraph agents"
+requires-python = ">=3.11"
+dependencies = [
+    "langgraph>=0.2.0",
+    "langchain-core>=0.3.0",
+    "langchain-openai>=0.2.0",
+    "pydantic>=2.0.0",
+]
+
+[project.scripts]
+llm-negotiation = "main:main"
+render-negotiation = "render_negotiation:main"
+render-negotiation-graphs = "render_negotiation_graphs:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.setuptools]
+py-modules = ["render_negotiation", "render_negotiation_graphs"]
