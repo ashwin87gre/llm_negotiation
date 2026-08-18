@@ -7,7 +7,8 @@ from src.context import negotiation_to_json
 from src.actions import validate_action_choice
 from src.case_facts import load_case_facts
 from src.party_instructions import load_party_instructions
-from src.opening_demand_file import load_opening_demand_file
+from src.opening_demand_file import load_opening_demand_file, render_opening_demand_message
+from src.opening_offer import generate_opening_offer
 from src.private_state import private_state_path, save_private_state
 from src.models import (
     Action,
@@ -53,12 +54,19 @@ def _in_progress_round(negotiation: Negotiation) -> Round | None:
     return None
 
 
+def _case_facts_file_for_party(state: NegotiationState, party: Party) -> str | None:
+    if party == "A":
+        return state.get("party_a_case_facts_path")
+    return state.get("party_b_case_facts_path")
+
+
 def _build_base_move_input(state: NegotiationState, party: Party) -> dict:
     negotiation = state["negotiation"]
     current_round = state.get("current_round")
     round_number = next_round_number(negotiation)
     opponent_last_offer = opponent_offer_for_party(negotiation, party, current_round)
     negotiation_file_path = state["file_path"]
+    case_facts_file = _case_facts_file_for_party(state, party)
 
     return {
         "party": party,
@@ -67,7 +75,12 @@ def _build_base_move_input(state: NegotiationState, party: Party) -> dict:
         "agent_instructions": load_party_instructions(
             negotiation_file_path, party, negotiation
         ),
-        "case_facts": load_case_facts(negotiation_file_path, party, negotiation),
+        "case_facts": load_case_facts(
+            negotiation_file_path,
+            party,
+            negotiation,
+            case_facts_file=case_facts_file,
+        ),
         "round_number": round_number,
         "opponent_last_offer": opponent_last_offer,
         "action": None,
@@ -97,11 +110,17 @@ def publish_party_a_opening_demand(state: NegotiationState) -> dict:
         raise ValueError("Party A demand can only be published once for round 1.")
 
     demand = load_opening_demand_file(state["file_path"])
+    offer = generate_opening_offer(
+        negotiation_path=state["file_path"],
+        negotiation=negotiation,
+        party_a_case_facts_path=state.get("party_a_case_facts_path"),
+    )
+    message = render_opening_demand_message(demand.message, offer)
     current_round.party_a = PartyMove(
         action=Action.demand,
-        offer=demand.offer,
+        offer=offer,
         reason=demand.reason,
-        message=demand.message,
+        message=message,
     )
     negotiation.turns[-1] = current_round
     save_negotiation_file(state["file_path"], negotiation)

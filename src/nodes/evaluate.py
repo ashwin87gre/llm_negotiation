@@ -3,14 +3,11 @@ from __future__ import annotations
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from src.context import (
-    format_agent_instructions,
-    format_case_facts,
     format_negotiation_history,
-    party_display_name,
 )
 from src.llm import structured_llm
 from src.models import PartyMoveState, PartyPrivateState, PrivateStateUpdate, format_evaluation_for_action
-from src.prompts import load_prompt
+from src.prompts import build_system_prompt
 
 
 def evaluate_case(state: PartyMoveState) -> dict:
@@ -38,14 +35,18 @@ def evaluate_case(state: PartyMoveState) -> dict:
     else:
         raise ValueError(f"Unknown evaluation_mode: {evaluation_mode}")
 
-    system_prompt = load_prompt(party, prompt_name, negotiation)
+    system_prompt = build_system_prompt(
+        party,
+        prompt_name,
+        negotiation,
+        agent_instructions,
+        case_facts,
+    )
     user_content = _build_evaluate_user_context(
         party=party,
         negotiation=negotiation,
         round_number=round_number,
         opponent_last_offer=opponent_last_offer,
-        agent_instructions=agent_instructions,
-        case_facts=case_facts,
         private_state=private_state,
         evaluation_mode=evaluation_mode,
     )
@@ -70,20 +71,11 @@ def _build_evaluate_user_context(
     negotiation,
     round_number: int,
     opponent_last_offer: int | None,
-    agent_instructions: str | None,
-    case_facts: str | None,
     private_state: PartyPrivateState | None,
     evaluation_mode: str,
 ) -> str:
+    del party
     sections: list[str] = []
-
-    if agent_instructions:
-        sections.extend([*format_agent_instructions(agent_instructions), "", ""]
-        )
-
-    if case_facts:
-        sections.extend([*format_case_facts(case_facts), "", ""]
-        )
 
     if private_state is not None and evaluation_mode == "incremental":
         sections.extend(
@@ -99,7 +91,6 @@ def _build_evaluate_user_context(
         [
             format_negotiation_history(negotiation),
             "",
-            f"You are representing {party_display_name(negotiation, party)}.",
             f"Current round number: {round_number}",
             f"Opponent's most recent offer: {_format_offer(opponent_last_offer)}",
         ]

@@ -1,12 +1,14 @@
 Case: '482 patent — {{party_a}} (patent holder) vs {{party_b}} (licensee/defendant)
 
+--------------------------------------------------------------
+SHARED FACTS — available to both parties
+--------------------------------------------------------------
+
 SETTING (2010)
 
 It is 2010. {{party_b}} is preparing to release a new smartphone with a built-in camera and multimedia messaging service (MMS) functionality. MMS allows users to send photos via text messages.
 
 The parties agree that the '482 patent is valid and infringed by {{party_b}} smartphones that include the MMS photo-upload/sharing feature.
-
-The following information has been made available to both parties.
 
 {{party_b}} BUSINESS CONTEXT
 
@@ -16,7 +18,7 @@ The following information has been made available to both parties.
 
 CAMERA / MMS CONTRIBUTION
 
-- {{party_b}} internal data: camera accounts for 6.2% of phone production cost (approx. $14.15).
+- {{party_b}} cost data, disclosed for these negotiations: camera accounts for 6.2% of phone production cost (approx. $14.15).
 - Industry surveys:
   - 65% of users use the phone's camera for photos (not video)
   - Of those, 77% share their photos
@@ -26,30 +28,37 @@ CAMERA / MMS CONTRIBUTION
 COMPARABLE LICENSES
 
 - Facebook paid $20 million for a non-exclusive, fully paid-up license to the '482 patent.
-- BlackBerry paid $3 million for a similar license (2010: still a strong communications player, position eroding).
+- BlackBerry paid $3 million for a similar license (still a strong communications player in 2010, position eroding).
 - eBay paid $3 million for a full image processing suite.
 - iPIX paid $735,000 for a license (smaller image-processing / virtual-tour company).
 
 INDUSTRY CONTEXT
 
-- A 2012 industry estimate: over 250,000 active patents cover smartphone technologies.
+- Industry estimates put over 250,000 active patents on smartphone technologies.
 - Users select smartphones based on many factors (screen size, apps, hardware), not just MMS.
-
-IF NEGOTIATIONS FAIL
-
-- Dispute proceeds to federal court litigation; the '482 patent is expected to be found valid and infringed. Uncertainty is remedies only.
-- Injunction likelihood: {{party_a}} is a small technology company that competes directly with {{party_b}} in the mobile device market. Under eBay Inc. v. MercExchange, probability of an injunction is high (historically around 80%).
-- Damages exposure: {{party_b}} would face a reasonable-royalty award based on what a jury believes would have occurred in a successful hypothetical negotiation.
 
 PRIOR {{party_a}} DEMAND (EARLIER LETTER)
 
 - Per-unit royalty of approx. $0.28/phone → ~$29 million over the life of the patent.
 - Calculation: profit per phone ($43.61) × camera cost share (6.2%) × infringing-feature usage (20.5%) × 50/50 split.
 
-CONFIDENTIAL GOALS — {{party_a}}
+IF NEGOTIATIONS FAIL
 
-- Patent is valid and infringed; focus negotiations on lump-sum or royalty amount and timing, not liability.
-- Prior letter articulated ~$29 million on a per-unit methodology; use that analysis to justify a substantial lump-sum demand.
-- Strong injunction posture given direct competition with {{party_b}} in mobile devices (~80% historical likelihood post-eBay).
-- Litigation wastes money for both sides; settlement should still capture fair value for MMS photo-sharing on projected 103.6M units.
-- Do not accept a nominal settlement that ignores the 20.5% usage rate and profit on infringing phones.
+- The dispute proceeds to federal court litigation. The '482 patent is expected to be found valid and infringed, so the uncertainty is over remedies only.
+- Injunction likelihood: {{party_a}} is a small technology company that competes directly with {{party_b}} in the mobile device market. Under eBay Inc. v. MercExchange, the probability of an injunction is high — historically around 80%.
+- Damages exposure: {{party_b}} would face a reasonable-royalty award based on what a jury believes would have resulted from a successful hypothetical negotiation.
+
+--------------------------------------------------------------
+CONFIDENTIAL — {{party_a}} ONLY. Do not disclose to {{party_b}}.
+--------------------------------------------------------------
+
+POSITION
+
+- The patent is valid and infringed. Keep negotiations focused on the lump-sum or royalty amount and timing, not on liability.
+- Injunction posture is strong given direct competition with {{party_b}} in mobile devices; treat it as primary leverage.
+
+OBJECTIVES
+
+- The prior letter articulated ~$29 million on a per-unit methodology. Use that analysis to justify a substantial lump-sum demand.
+- Litigation wastes money for both sides, but any settlement should still capture fair value for MMS photo-sharing across the projected 103.6M units.
+- Do not accept a nominal settlement that ignores the 20.5% usage rate and the profit earned on infringing phones.

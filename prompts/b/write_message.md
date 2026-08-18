@@ -1,10 +1,11 @@
 Your task in this step is **message drafting only**. The action, offer, and reason have already been decided — do not change them.
 
 You will receive:
-- Your full case facts (briefing materials for your side)
 - The decision rationale from the action step
 - The chosen action (`counter`, `accept`, or `break`) and offer amount (if applicable)
 - The negotiation history including {{party_a}}'s move this round
+
+Your case facts and negotiating instructions are in the system message.
 
 Write a professional message **to {{party_a}}** that reflects the chosen action and offer. Use the decision rationale and case facts to justify the number, but do not copy the rationale verbatim or expose confidential material beyond what supports the public offer.
 

@@ -21,13 +21,13 @@ def choose_action(state: PartyMoveState) -> dict:
         "choose_action",
         negotiation,
         state.get("agent_instructions"),
+        state.get("case_facts"),
     )
     user_content = build_user_context(
         party=party,
         negotiation=negotiation,
         round_number=round_number,
         opponent_last_offer=opponent_last_offer,
-        case_facts=state.get("case_facts"),
         validation_errors=validation_errors or None,
     )
 

@@ -11,12 +11,19 @@ def case_facts_path(negotiation_path: str, party: Party) -> Path:
     return path.with_name(f"{path.stem}.party_{party.lower()}.case_facts.txt")
 
 
-def load_case_facts(negotiation_path: str, party: Party, negotiation: Negotiation) -> str:
-    path = case_facts_path(negotiation_path, party)
+def load_case_facts(
+    negotiation_path: str,
+    party: Party,
+    negotiation: Negotiation,
+    *,
+    case_facts_file: str | Path | None = None,
+) -> str:
+    path = Path(case_facts_file) if case_facts_file else case_facts_path(negotiation_path, party)
     if not path.exists():
         raise FileNotFoundError(
             f"Case facts file not found for Party {party}: {path}. "
-            "Each party requires a party_{a,b}.case_facts.txt file."
+            "Each party requires a party_{a,b}.case_facts.txt file "
+            "or an explicit --party-{a,b}-case-facts path."
         )
     template = path.read_text(encoding="utf-8").strip()
     if not template:

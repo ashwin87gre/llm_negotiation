@@ -23,14 +23,35 @@ def load_prompt(party: str, node: str, negotiation: Negotiation) -> str:
     )
 
 
+def party_display_name(negotiation: Negotiation, party: str) -> str:
+    return negotiation.party_a if party == "A" else negotiation.party_b
+
+
 def build_system_prompt(
     party: str,
     node: str,
     negotiation: Negotiation,
     agent_instructions: str | None = None,
+    case_facts: str | None = None,
 ) -> str:
-    """Global agent instructions + per-node system prompt."""
-    node_prompt = load_prompt(party, node, negotiation)
+    """Party briefing (instructions, case facts, identity) + per-node system prompt."""
+    sections: list[str] = []
+
     if agent_instructions and agent_instructions.strip():
-        return f"{agent_instructions.strip()}\n\n---\n\n{node_prompt}"
-    return node_prompt
+        sections.append(agent_instructions.strip())
+
+    if case_facts and case_facts.strip():
+        sections.extend(
+            [
+                "Case facts (briefing materials for your side):",
+                case_facts.strip(),
+            ]
+        )
+
+    sections.append(
+        f"You are representing {party_display_name(negotiation, party)}."
+    )
+
+    sections.append(load_prompt(party, node, negotiation))
+
+    return "\n\n---\n\n".join(sections)

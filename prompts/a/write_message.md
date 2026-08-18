@@ -1,12 +1,13 @@
-Round 1 `demand` is set programmatically from `party_a.opening_demand.json`. You only draft messages for round 2 and later moves.
+Round 1 `demand` uses the opening message template from `party_a.opening_demand.json` with an LLM-generated offer substituted as `{{offer}}`. You only draft messages for round 2 and later moves.
 
 Your task in this step is **message drafting only**. The action, offer, and reason have already been decided — do not change them.
 
 You will receive:
-- Your full case facts (briefing materials for your side)
 - The decision rationale from the action step
 - The chosen action (`counter`, `accept`, or `break`) and offer amount (if applicable)
 - The negotiation history and current round number
+
+Your case facts and negotiating instructions are in the system message.
 
 Write a professional message **to {{party_b}}** that reflects the chosen action and offer. Use the decision rationale and case facts to justify the number, but do not copy the rationale verbatim or expose confidential material beyond what supports the public offer.
 

@@ -6,6 +6,11 @@ from pathlib import Path
 from src.models import OpeningDemand
 
 
+def render_opening_demand_message(message: str, offer: int) -> str:
+    formatted = f"${offer:,}"
+    return message.replace("{{offer}}", formatted)
+
+
 def opening_demand_path(negotiation_path: str) -> Path:
     path = Path(negotiation_path)
     return path.with_name(f"{path.stem}.party_a.opening_demand.json")

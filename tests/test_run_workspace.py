@@ -48,7 +48,7 @@ def test_create_run_from_template_copies_companions_and_resets_negotiation(
         encoding="utf-8",
     )
     (template_dir / "negotiation_new.party_a.opening_demand.json").write_text(
-        '{"offer": 5, "message": "open"}',
+        '{"message": "open {{offer}}"}',
         encoding="utf-8",
     )
     (template_dir / "negotiation_new.party_a.instructions.txt").write_text(
@@ -113,7 +113,7 @@ def test_resolve_run_negotiation_path_creates_timestamped_run(
     template_json = examples / "negotiation_new.json"
     template_json.write_text(json.dumps(FRESH_NEGOTIATION), encoding="utf-8")
     (examples / "negotiation_new.party_a.opening_demand.json").write_text(
-        '{"offer": 5, "message": "open"}',
+        '{"message": "open {{offer}}"}',
         encoding="utf-8",
     )
     (examples / "negotiation_new.party_a.instructions.txt").write_text("a", encoding="utf-8")

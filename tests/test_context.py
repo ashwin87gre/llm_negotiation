@@ -67,6 +67,30 @@ def test_format_negotiation_history_is_json_with_roles_preamble():
     assert "Reason:" not in text
 
 
+def test_format_negotiation_history_omits_past_reason():
+    negotiation = Negotiation(
+        case_id="TEST",
+        party_a="Summit VI LLC",
+        party_b="Samsung Electronics Co., Ltd.",
+        turns=[
+            Round(
+                round=1,
+                party_b=PartyMove(
+                    action=Action.counter,
+                    offer=1_000_000,
+                    reason="Internal strategy note.",
+                    message="We counter at one million.",
+                ),
+            )
+        ],
+    )
+    text = format_negotiation_history(negotiation)
+    assert '"offer": 1000000' in text
+    assert "We counter at one million." in text
+    assert "Reason:" not in text
+    assert "Internal strategy note." not in text
+
+
 def test_build_user_context_keeps_current_turn_reason_block():
     negotiation = Negotiation(
         case_id="TEST",
@@ -84,3 +108,5 @@ def test_build_user_context_keeps_current_turn_reason_block():
     assert "Decision rationale (from action step" in text
     assert "Internal rationale for this move." in text
     assert "JSON key party_b is Samsung Electronics Co., Ltd." in text
+    assert "Case facts (briefing materials for your side):" not in text
+    assert "You are representing" not in text

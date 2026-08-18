@@ -93,3 +93,29 @@ def test_build_initial_evaluation_input_loads_same_files():
         assert move_input["party"] == "A"
         assert move_input["agent_instructions"] == "Party A instructions."
         assert move_input["case_facts"] == "Party A case facts."
+
+
+def test_build_party_move_input_uses_case_facts_override_from_state():
+    with tempfile.TemporaryDirectory() as tmp:
+        negotiation_path = Path(tmp) / "negotiation.json"
+        negotiation = Negotiation(case_id="TEST", party_a="A", party_b="B", turns=[])
+        negotiation_path.write_text("{}", encoding="utf-8")
+        _write_party_files(
+            negotiation_path,
+            "B",
+            "Party B instructions.",
+            "Default party B case facts.",
+        )
+        override_path = Path(tmp) / "override_b_facts.txt"
+        override_path.write_text("Override party B case facts.", encoding="utf-8")
+
+        move_input = build_party_move_input(
+            {
+                "negotiation": negotiation,
+                "file_path": str(negotiation_path),
+                "party_b_case_facts_path": str(override_path),
+            },
+            "B",
+        )
+
+        assert move_input["case_facts"] == "Override party B case facts."

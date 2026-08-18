@@ -51,10 +51,36 @@ def main() -> None:
         default=None,
         help="Maximum number of complete rounds to run (default: unlimited until agreement/breakdown)",
     )
+    run_parser.add_argument(
+        "--party-a-case-facts",
+        default=None,
+        metavar="PATH",
+        help=(
+            "Case facts file for Party A (default: {negotiation_stem}.party_a.case_facts.txt "
+            "next to the negotiation JSON)"
+        ),
+    )
+    run_parser.add_argument(
+        "--party-b-case-facts",
+        default=None,
+        metavar="PATH",
+        help=(
+            "Case facts file for Party B (default: {negotiation_stem}.party_b.case_facts.txt "
+            "next to the negotiation JSON)"
+        ),
+    )
 
     args = parser.parse_args()
 
     if args.command == "run":
+        for label, path_arg in (
+            ("Party A", args.party_a_case_facts),
+            ("Party B", args.party_b_case_facts),
+        ):
+            if path_arg is not None and not Path(path_arg).expanduser().resolve().exists():
+                print(f"Error: {label} case facts file not found: {path_arg}", file=sys.stderr)
+                sys.exit(1)
+
         try:
             negotiation_path, created = resolve_run_negotiation_path(
                 args.file,
@@ -68,13 +94,20 @@ def main() -> None:
             print(f"Run directory: {negotiation_path.parent}")
 
         graph = build_negotiation_graph()
-        result = graph.invoke(
-            {
-                "file_path": str(negotiation_path),
-                "done": False,
-                "max_rounds": args.max_rounds,
-            }
-        )
+        invoke_state: dict = {
+            "file_path": str(negotiation_path),
+            "done": False,
+            "max_rounds": args.max_rounds,
+        }
+        if args.party_a_case_facts is not None:
+            invoke_state["party_a_case_facts_path"] = str(
+                Path(args.party_a_case_facts).expanduser().resolve()
+            )
+        if args.party_b_case_facts is not None:
+            invoke_state["party_b_case_facts_path"] = str(
+                Path(args.party_b_case_facts).expanduser().resolve()
+            )
+        result = graph.invoke(invoke_state)
         negotiation = result["negotiation"]
         print(f"Negotiation file: {negotiation_path}")
         print(f"Status: {negotiation.status}")

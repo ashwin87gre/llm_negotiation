@@ -25,7 +25,7 @@ def test_load_prompt_substitutes_names_from_negotiation():
     assert "{{party_b}}" not in prompt
 
 
-def test_build_system_prompt_combines_instructions_and_node_prompt():
+def test_build_system_prompt_combines_instructions_node_prompt_and_case_facts():
     negotiation = Negotiation(
         case_id="TEST",
         party_a="Summit VI LLC",
@@ -36,8 +36,12 @@ def test_build_system_prompt_combines_instructions_and_node_prompt():
         "choose_action",
         negotiation,
         "Represent Samsung in licensing discussions.",
+        "Injunction likelihood is high.",
     )
     assert system.startswith("Represent Samsung in licensing discussions.")
+    assert "Case facts (briefing materials for your side):" in system
+    assert "Injunction likelihood is high." in system
+    assert "You are representing Samsung Electronics Co., Ltd." in system
     assert "---" in system
     assert "decision only" in system.lower()
     assert "{{party_a}}" not in system

@@ -64,11 +64,11 @@ def _mock_llm(mock_structured_llm: MagicMock) -> MagicMock:
 
 
 @patch("src.nodes.evaluate.structured_llm")
-@patch("src.nodes.evaluate.load_prompt")
+@patch("src.nodes.evaluate.build_system_prompt")
 def test_evaluate_case_initial_loads_evaluate_initial_prompt(
-    mock_load_prompt: MagicMock, mock_structured_llm: MagicMock
+    mock_build_system_prompt: MagicMock, mock_structured_llm: MagicMock
 ):
-    mock_load_prompt.return_value = "initial system prompt"
+    mock_build_system_prompt.return_value = "initial system prompt"
     _mock_llm(mock_structured_llm)
 
     state = _base_state(
@@ -79,16 +79,22 @@ def test_evaluate_case_initial_loads_evaluate_initial_prompt(
     )
     evaluate_case(state)
 
-    mock_load_prompt.assert_called_once_with("A", "evaluate_initial", state["negotiation"])
+    mock_build_system_prompt.assert_called_once_with(
+        "A",
+        "evaluate_initial",
+        state["negotiation"],
+        "Party A instructions from file.",
+        "Party A case facts from file.",
+    )
     mock_structured_llm.assert_called_once_with(PrivateStateUpdate)
 
 
 @patch("src.nodes.evaluate.structured_llm")
-@patch("src.nodes.evaluate.load_prompt")
+@patch("src.nodes.evaluate.build_system_prompt")
 def test_evaluate_case_incremental_loads_evaluate_incremental_prompt(
-    mock_load_prompt: MagicMock, mock_structured_llm: MagicMock
+    mock_build_system_prompt: MagicMock, mock_structured_llm: MagicMock
 ):
-    mock_load_prompt.return_value = "incremental system prompt"
+    mock_build_system_prompt.return_value = "incremental system prompt"
     _mock_llm(mock_structured_llm)
 
     state = _base_state(
@@ -108,13 +114,19 @@ def test_evaluate_case_incremental_loads_evaluate_incremental_prompt(
     )
     evaluate_case(state)
 
-    mock_load_prompt.assert_called_once_with("B", "evaluate_incremental", state["negotiation"])
+    mock_build_system_prompt.assert_called_once_with(
+        "B",
+        "evaluate_incremental",
+        state["negotiation"],
+        "Party B instructions.",
+        "Party B case facts.",
+    )
 
 
 @patch("src.nodes.evaluate.structured_llm")
-@patch("src.nodes.evaluate.load_prompt")
+@patch("src.nodes.evaluate.build_system_prompt")
 def test_evaluate_case_initial_rejects_missing_instructions(
-    mock_load_prompt: MagicMock, mock_structured_llm: MagicMock
+    mock_build_system_prompt: MagicMock, mock_structured_llm: MagicMock
 ):
     with pytest.raises(ValueError, match="Initial evaluation requires agent instructions"):
         evaluate_case(
@@ -125,14 +137,14 @@ def test_evaluate_case_initial_rejects_missing_instructions(
             )
         )
 
-    mock_load_prompt.assert_not_called()
+    mock_build_system_prompt.assert_not_called()
     mock_structured_llm.assert_not_called()
 
 
 @patch("src.nodes.evaluate.structured_llm")
-@patch("src.nodes.evaluate.load_prompt")
+@patch("src.nodes.evaluate.build_system_prompt")
 def test_evaluate_case_initial_rejects_missing_case_facts(
-    mock_load_prompt: MagicMock, mock_structured_llm: MagicMock
+    mock_build_system_prompt: MagicMock, mock_structured_llm: MagicMock
 ):
     with pytest.raises(ValueError, match="Initial evaluation requires case facts"):
         evaluate_case(
@@ -143,14 +155,14 @@ def test_evaluate_case_initial_rejects_missing_case_facts(
             )
         )
 
-    mock_load_prompt.assert_not_called()
+    mock_build_system_prompt.assert_not_called()
     mock_structured_llm.assert_not_called()
 
 
 @patch("src.nodes.evaluate.structured_llm")
-@patch("src.nodes.evaluate.load_prompt")
+@patch("src.nodes.evaluate.build_system_prompt")
 def test_evaluate_case_incremental_rejects_missing_private_state(
-    mock_load_prompt: MagicMock, mock_structured_llm: MagicMock
+    mock_build_system_prompt: MagicMock, mock_structured_llm: MagicMock
 ):
     with pytest.raises(ValueError, match="Incremental evaluation requires existing private state"):
         evaluate_case(
@@ -162,5 +174,5 @@ def test_evaluate_case_incremental_rejects_missing_private_state(
             )
         )
 
-    mock_load_prompt.assert_not_called()
+    mock_build_system_prompt.assert_not_called()
     mock_structured_llm.assert_not_called()

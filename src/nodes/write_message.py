@@ -24,13 +24,13 @@ def write_message(state: PartyMoveState) -> dict:
         "write_message",
         negotiation,
         state.get("agent_instructions"),
+        state.get("case_facts"),
     )
     user_content = build_user_context(
         party=party,
         negotiation=negotiation,
         round_number=round_number,
         opponent_last_offer=opponent_last_offer,
-        case_facts=state.get("case_facts"),
         action=action,
         offer=offer,
         reason=state.get("reason"),

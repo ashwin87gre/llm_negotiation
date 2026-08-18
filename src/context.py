@@ -11,28 +11,10 @@ PARTY_ROLES_LINE_TEMPLATE = (
 )
 
 
-def party_display_name(negotiation: Negotiation, party: Party) -> str:
-    return negotiation.party_a if party == "A" else negotiation.party_b
-
-
 def format_offer(offer: int | None) -> str:
     if offer is None:
         return "none"
     return f"${offer:,}"
-
-
-def format_agent_instructions(agent_instructions: str) -> list[str]:
-    return [
-        "Agent instructions (role and negotiating behavior):",
-        agent_instructions,
-    ]
-
-
-def format_case_facts(case_facts: str) -> list[str]:
-    return [
-        "Case facts (briefing materials for your side):",
-        case_facts,
-    ]
 
 
 def format_negotiation_party_roles_line(negotiation: Negotiation) -> str:
@@ -44,6 +26,7 @@ def format_negotiation_party_roles_line(negotiation: Negotiation) -> str:
 
 
 def public_move_for_prompt(move: PartyMove) -> dict:
+    """Public move fields for LLM history; excludes internal choose_action reason."""
     action = move.action.value if isinstance(move.action, Action) else move.action
     return {
         "action": action,
@@ -92,8 +75,6 @@ def build_user_context(
     negotiation: Negotiation,
     round_number: int,
     opponent_last_offer: int | None,
-    agent_instructions: str | None = None,
-    case_facts: str | None = None,
     current_round: Round | None = None,
     action: str | None = None,
     offer: int | None = None,
@@ -102,14 +83,6 @@ def build_user_context(
 ) -> str:
     del current_round
     sections: list[str] = []
-
-    if agent_instructions:
-        sections.extend([*format_agent_instructions(agent_instructions), "", ""]
-        )
-
-    if case_facts:
-        sections.extend([*format_case_facts(case_facts), "", ""]
-        )
 
     if reason:
         sections.extend(
@@ -125,7 +98,6 @@ def build_user_context(
         [
             format_negotiation_history(negotiation),
             "",
-            f"You are representing {party_display_name(negotiation, party)}.",
             f"Current round number: {round_number}",
             f"Opponent's last negotiated offer: {format_offer(opponent_last_offer)}",
         ]

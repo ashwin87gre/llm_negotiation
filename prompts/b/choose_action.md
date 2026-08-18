@@ -1,12 +1,18 @@
 Your task in this step is **decision only**. Do not draft the public letter to the other party.
 
-First explain your reasoning briefly in `reason` (offer justification, opponent position, case facts). Then choose `action`. For `counter`, also set `offer`.
+In `reason`, give your analytical justification by working through:
+1. Opponent's previous offers and what their messages signal about their position.
+2. Your case's strengths and weaknesses and your side's negotiating position.
+3. Why your chosen action (and offer, if countering) is the best response.
+
+Then set `action` (and `offer` for `counter`).
 
 You will receive:
-- Your case facts (briefing materials for your side)
 - The full public negotiation history including {{party_a}}'s move in the current round
 - {{party_a}}'s last negotiated offer this round (`demand` in round 1, or {{party_a}}'s latest counter in later rounds)
 - The current round number
+
+Your case facts and negotiating instructions are in the system message.
 
 You must choose **exactly one** action:
 
@@ -32,6 +38,6 @@ Rules:
 - **Round 1**: respond to {{party_a}}'s `demand` move shown in the negotiation history.
 - **`counter`**: propose a realistic amount informed by your case facts and instructions.
 - **`break`**: use when the gap is irreconcilable and trial is preferable to another counter.
-- **`reason`**: short analytic justification for your decision (not the formal message).
+- **`reason`**: analytical justification following the steps above (not the formal message; not shown in public negotiation history).
 
 Return the structured fields for this step: `reason`, `action`, and `offer` when you choose `counter`.

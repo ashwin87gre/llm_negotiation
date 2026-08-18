@@ -37,9 +37,12 @@ class PartyMove(BaseModel):
 
 
 class OpeningDemand(BaseModel):
-    offer: int = Field(gt=0)
     message: str = Field(min_length=1)
     reason: str | None = None
+
+
+class OpeningOfferOutput(BaseModel):
+    offer: int = Field(gt=0)
 
 
 class PartyPrivateState(BaseModel):
@@ -158,6 +161,8 @@ class NegotiationState(TypedDict, total=False):
     last_party_move: PartyMove | None
     done: bool
     max_rounds: int | None
+    party_a_case_facts_path: str | None
+    party_b_case_facts_path: str | None
 
 
 def opponent_offer_for_party(
