@@ -38,6 +38,15 @@ def test_build_action_output_model_accepts_counter():
     assert result.action == "counter"
 
 
+def test_build_action_output_model_puts_reason_before_action():
+    """Schema property order is generation order, so reason must precede the decision."""
+    model = build_action_output_model("B", 1)
+    properties = list(model.model_json_schema()["properties"])
+
+    assert properties.index("reason") < properties.index("action")
+    assert properties.index("reason") < properties.index("offer")
+
+
 def test_normalize_action_offer_sets_accept_from_opponent():
     assert normalize_action_offer("accept", None, 3500000) == 3500000
     assert normalize_action_offer("accept", 999999, 3500000) == 3500000

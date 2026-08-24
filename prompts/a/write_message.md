@@ -1,6 +1,6 @@
-Round 1 `demand` uses the opening message template from `party_a.opening_demand.json` with an LLM-generated offer substituted as `{{offer}}`. You only draft messages for round 2 and later moves.
-
 Your task in this step is **message drafting only**. The action, offer, and reason have already been decided — do not change them.
+
+You draft messages for round 2 and later moves only; {{party_a}}'s round 1 opening demand is published without this step.
 
 You will receive:
 - The decision rationale from the action step

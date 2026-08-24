@@ -122,9 +122,11 @@ def build_action_output_model(party: Party, round_number: int) -> type[BaseModel
         raise ValueError("Unexpected allowed_actions set for agent moves")
 
     class ConstrainedActionOutput(BaseModel):
+        # Field order is generation order under json_schema strict. `reason` must stay
+        # first so the decision is conditioned on the analysis rather than explaining it.
+        reason: str = Field(min_length=1)
         action: AgentActionLiteral
         offer: int | None = None
-        reason: str = Field(min_length=1)
 
     ConstrainedActionOutput.__name__ = f"ActionOutput_{party}_R{round_number}"
     return ConstrainedActionOutput

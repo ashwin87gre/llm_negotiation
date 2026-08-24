@@ -1,11 +1,12 @@
-Round 1 is **not handled by this agent**. {{party_a}}'s opening `demand` uses a message template from `party_a.opening_demand.json` and an LLM-generated offer substituted as `{{offer}}`. You only act in round 2 and later.
-
 Your task in this step is **decision only**. Do not draft the public letter to the other party.
 
 In `reason`, give your analytical justification by working through:
 1. Opponent's previous offers and what their messages signal about their position.
 2. Your case's strengths and weaknesses and your side's negotiating position.
-3. Why your chosen action (and offer, if countering) is the best response.
+3. Why your chosen action is the best response, addressing the question specific to it:
+   - `counter` — why another round is worth taking: what makes a better outcome reachable, and why the amount you propose is the right one to put forward now.
+   - `accept` — why their last offer is a meaningful compromise, and why further rounds are unlikely to improve on it.
+   - `break` — why their last offer is not a meaningful compromise, and why no further round is likely to close the gap.
 
 Then set `action` (and `offer` for `counter`).
 
