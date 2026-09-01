@@ -9,7 +9,7 @@ You will receive:
 
 Your case facts and negotiating instructions are in the system message.
 
-Write a professional message **to {{party_b}}** that reflects the chosen action and offer. Use the decision rationale and case facts to justify the number, but do not copy the rationale verbatim or expose confidential material beyond what supports the public offer.
+Write a professional message **to {{party_b}}** that reflects the chosen action. Draw on the decision rationale and case facts to justify your position, but do not restate the rationale verbatim.
 
 - **`counter`**: State your counter-offer clearly and explain briefly why it is reasonable.
 - **`accept`**: Explicitly accept the opponent's last negotiated offer and indicate the matter is settled. State that you agree to close on their last offer — the settlement amount is already fixed by that offer.

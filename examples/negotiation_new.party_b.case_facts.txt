@@ -18,7 +18,7 @@ The parties agree that the '482 patent is valid and infringed by {{party_b}} sma
 
 CAMERA / MMS CONTRIBUTION
 
-- {{party_b}} cost data, disclosed for these negotiations: camera accounts for 6.2% of phone production cost (approx. $14.15).
+- {{party_b}} cost data, disclosed for these negotiations: camera accounts for 6.2% of phone production cost.
 - Industry surveys:
   - 65% of users use the phone's camera for photos (not video)
   - Of those, 77% share their photos
@@ -37,15 +37,16 @@ INDUSTRY CONTEXT
 - Industry estimates put over 250,000 active patents on smartphone technologies.
 - Users select smartphones based on many factors (screen size, apps, hardware), not just MMS.
 
-PRIOR {{party_a}} DEMAND (EARLIER LETTER)
+VALUATION APPROACH
 
-- Per-unit royalty of approx. $0.28/phone → ~$29 million over the life of the patent.
-- Calculation: profit per phone ($43.61) × camera cost share (6.2%) × infringing-feature usage (20.5%) × 50/50 split.
+- A per-unit royalty can be derived as: profit per phone ($43.61) × camera cost share (6.2%) × infringing-feature usage (20.5%) × the share of that value allocated to the patent holder. Multiply by projected unit sales for a lump-sum equivalent.
+- Either side may use this approach, adjust it, or argue for a different one entirely.
 
 IF NEGOTIATIONS FAIL
 
 - The dispute proceeds to federal court litigation. The '482 patent is expected to be found valid and infringed, so the uncertainty is over remedies only.
-- Injunction likelihood: {{party_a}} is a small technology company that competes directly with {{party_b}} in the mobile device market. Under eBay Inc. v. MercExchange, the probability of an injunction is high — historically around 80%.
+- Probability of injunction: 80%. {{party_a}} is a small technology company that competes directly with {{party_b}} in the mobile device market, so under eBay Inc. v. MercExchange an injunction is likely.
+- Consequence of an injunction: {{party_b}} must stop selling infringing handsets until MMS photo-sharing is removed. Redesign, recertification, and the resulting launch delay put an estimated 12 million units of projected sales at risk.
 - Damages exposure: {{party_b}} would face a reasonable-royalty award based on what a jury believes would have resulted from a successful hypothetical negotiation.
 
 --------------------------------------------------------------
@@ -54,15 +55,17 @@ CONFIDENTIAL — {{party_b}} ONLY. Do not disclose to {{party_a}}.
 
 POSITION
 
-- An injunction would be catastrophic: it would block or delay the smartphone launch.
-- Attorney's fees are estimated at $5 million, excluding appeals.
+- An injunction would block or delay the smartphone launch, which is your central exposure.
+- Your litigation costs are estimated at $5 million in attorney's fees, excluding appeals.
 
 OBJECTIVES
 
 - Secure a lump-sum license quickly to prevent delays to the smartphone launch.
-- Optimal settlement range: $500,000 to $2 million, with flexibility depending on the risk of delay.
+- No target settlement figure is given to you. Work out your own maximum from your litigation alternative: your attorney's fees, the probability of an injunction, and what an injunction would cost you.
 
 TACTICS
 
+- Injunction risk is the dominant variable in your position. The higher the probability of an injunction, the more a settlement is worth to you and the more ground you should be willing to give to secure one; the lower it is, the harder you should hold.
+- Press {{party_a}} on why a negotiated licence serves them better than litigation: their own costs, the delay before any recovery, and the uncertainty of a damages award.
 - Compare {{party_b}}'s position to companies that paid smaller lump-sum royalties (BlackBerry $3M, eBay $3M, iPIX $735K) rather than Facebook's $20M.
 - Highlight the breadth of smartphone features and the weak connection between sending photos over text and the overall value of the smartphone.
