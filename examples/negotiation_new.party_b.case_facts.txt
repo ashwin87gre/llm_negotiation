@@ -45,7 +45,7 @@ VALUATION APPROACH
 IF NEGOTIATIONS FAIL
 
 - The dispute proceeds to federal court litigation. The '482 patent is expected to be found valid and infringed, so the uncertainty is over remedies only.
-- Probability of injunction: 80%. {{party_a}} is a small technology company that competes directly with {{party_b}} in the mobile device market, so under eBay Inc. v. MercExchange an injunction is likely.
+- Probability of injunction: 80%. Under eBay Inc. v. MercExchange, injunctive relief turns in part on whether the patent holder competes directly with the infringer; {{party_a}} is a small technology company that competes directly with {{party_b}} in the mobile device market.
 - Consequence of an injunction: {{party_b}} must stop selling infringing handsets until MMS photo-sharing is removed. Redesign, recertification, and the resulting launch delay put an estimated 12 million units of projected sales at risk.
 - Damages exposure: {{party_b}} would face a reasonable-royalty award based on what a jury believes would have resulted from a successful hypothetical negotiation.
 
@@ -55,13 +55,13 @@ CONFIDENTIAL — {{party_b}} ONLY. Do not disclose to {{party_a}}.
 
 POSITION
 
-- An injunction would block or delay the smartphone launch, which is your central exposure.
-- Your litigation costs are estimated at $5 million in attorney's fees, excluding appeals.
+- An injunction would block or delay the smartphone launch. How much that should weigh on you depends on how likely an injunction is.
+- Your litigation costs are estimated at $5 million in attorney's fees, excluding appeals. That is the small part. The real cost of litigating is the risk of an injunction, which would be catastrophic.
 
 OBJECTIVES
 
-- Secure a lump-sum license quickly to prevent delays to the smartphone launch.
-- No target settlement figure is given to you. Work out your own maximum from your litigation alternative: your attorney's fees, the probability of an injunction, and what an injunction would cost you.
+-  Secure a lump-sum license on terms preferable to litigation. How urgently you should settle depends primarily on the probability of an injunction.
+- No target settlement figure is given to you. Work out your own maximum from your total expected litigation exposure: the damages award you expect to pay, plus your attorney's fees, plus the probability of an injunction multiplied by what an injunction would cost you.
 
 TACTICS
 

@@ -3,11 +3,13 @@ Your task in this step is **decision only**. Do not draft the public letter to t
 In `reason`, give your analytical justification by working through:
 1. Opponent's previous offers and what their messages signal about their position.
 2. Your case's strengths and weaknesses and your side's negotiating position.
-3. What happens if you do not settle: your litigation costs, the probability of an injunction and what it would cost, and how well the opponent's arguments would hold up in court. Use that to work out the worst settlement you would still prefer to litigating.
+3. Your alternative to settling. Litigation is not a neutral fallback: it costs you fees and delay whatever the outcome, and it ends in either an injunction or a damages award. Weigh what those cost or gain you against the probability of an injunction — the variable that most determines leverage here — and work out the worst settlement you would still prefer to litigating.
 4. Which action follows from steps 1-3, addressing the question specific to it:
    - `counter` — why the amount you propose is more likely to be accepted than your previous offer, and why it is still an outcome your side would be satisfied with.
    - `accept` — why their last offer is a meaningful compromise, and why further rounds are unlikely to improve on it.
    - `break` — why their last offer is not a meaningful compromise, and why no further round is likely to close the gap.
+
+One approach to a fair settlement figure: multiply the probability of an injunction by what an injunction would be worth to your side, and treat that expected value as what avoiding litigation is worth. Use it, adjust it, or argue for a different approach — but state the dollar figures behind whatever number you propose.
 
 Then set `action` (and `offer` for `counter`).
 

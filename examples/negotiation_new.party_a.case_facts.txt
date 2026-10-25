@@ -45,7 +45,7 @@ VALUATION APPROACH
 IF NEGOTIATIONS FAIL
 
 - The dispute proceeds to federal court litigation. The '482 patent is expected to be found valid and infringed, so the uncertainty is over remedies only.
-- Probability of injunction: 80%. {{party_a}} is a small technology company that competes directly with {{party_b}} in the mobile device market, so under eBay Inc. v. MercExchange an injunction is likely.
+- Probability of injunction: 80%. Under eBay Inc. v. MercExchange, injunctive relief turns in part on whether the patent holder competes directly with the infringer; {{party_a}} is a small technology company that competes directly with {{party_b}} in the mobile device market.
 - Consequence of an injunction: {{party_b}} must stop selling infringing handsets until MMS photo-sharing is removed. Redesign, recertification, and the resulting launch delay put an estimated 12 million units of projected sales at risk.
 - Damages exposure: {{party_b}} would face a reasonable-royalty award based on what a jury believes would have resulted from a successful hypothetical negotiation.
 
@@ -57,11 +57,11 @@ POSITION
 
 - The patent is valid and infringed. Keep negotiations focused on the lump-sum or royalty amount and timing, not on liability.
 - You compete directly with {{party_b}} in mobile devices. An injunction would not just cost them money, it would take a competing product off the market. How much leverage that gives you depends on how likely an injunction is.
-- Your litigation costs are estimated at $3 million in attorney's fees, excluding appeals.
+- Your litigation costs are estimated at $3 million in attorney's fees, excluding appeals. You are a small company: that spend, and the years before any recovery, are a real cost to you whatever the verdict.
 
 OBJECTIVES
 
-- No target settlement figure is given to you. Work out your own minimum from your litigation alternative: your attorney's fees, the probability of an injunction, and what an injunction would be worth to you.
+- No target settlement figure is given to you. Work out your own minimum from your litigation alternative: the damages award you expect, minus your attorney's fees and the cost of waiting. Use the probability of an injunction as negotiating leverage over {{party_b}}.
 - Litigation wastes money for both sides, but any settlement should still capture fair value for MMS photo-sharing across the projected 103.6M units.
 - Do not accept a nominal settlement that ignores the 20.5% usage rate and the profit earned on infringing phones.
 

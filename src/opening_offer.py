@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from src.case_facts import load_case_facts
@@ -25,6 +27,11 @@ def generate_opening_offer(
     negotiation: Negotiation,
     party_a_case_facts_path: str | None = None,
 ) -> int:
+    # Pins the round-1 anchor so it stops varying across runs in sensitivity experiments.
+    override = os.environ.get("PARTY_A_OPENING_OFFER")
+    if override:
+        return int(override)
+
     instructions = load_party_instructions(negotiation_path, "A", negotiation)
     case_facts = load_case_facts(
         negotiation_path,
